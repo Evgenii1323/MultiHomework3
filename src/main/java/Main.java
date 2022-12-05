@@ -15,11 +15,11 @@ public class Main {
 
         Thread thread1 = new Thread(() -> {
             for (String i : texts) {
-                if (i.length() == 3 && firstCheck(i)) {
+                if (i.length() == 3 && checkWordsWithRepeatingLetters(i)) {
                         counting1.getAndIncrement();
-                } else if (i.length() == 4 && firstCheck(i)) {
+                } else if (i.length() == 4 && checkWordsWithRepeatingLetters(i)) {
                         counting2.getAndIncrement();
-                } else if (i.length() == 5 && firstCheck(i)) {
+                } else if (i.length() == 5 && checkWordsWithRepeatingLetters(i)) {
                         counting3.getAndIncrement();
                 }
             }
@@ -28,11 +28,11 @@ public class Main {
 
         Thread thread2 = new Thread(() -> {
             for (String i : texts) {
-                if (i.length() == 3 && secondCheck(i)) {
+                if (i.length() == 3 && checkWordsWithMirrorLetters(i)) {
                     counting1.getAndIncrement();
-                } else if (i.length() == 4 && secondCheck(i)) {
+                } else if (i.length() == 4 && checkWordsWithMirrorLetters(i)) {
                     counting2.getAndIncrement();
-                } else if (i.length() == 5 && secondCheck(i)) {
+                } else if (i.length() == 5 && checkWordsWithMirrorLetters(i)) {
                     counting3.getAndIncrement();
                 }
             }
@@ -41,11 +41,11 @@ public class Main {
 
         Thread thread3 = new Thread(() -> {
             for (String i : texts) {
-                if (i.length() == 3 && thirdCheck(i)) {
+                if (i.length() == 3 && checkWordsWithAlphabeticalLetters(i)) {
                     counting1.getAndIncrement();
-                } else if (i.length() == 4 && thirdCheck(i)) {
+                } else if (i.length() == 4 && checkWordsWithAlphabeticalLetters(i)) {
                     counting2.getAndIncrement();
-                } else if (i.length() == 5 && thirdCheck(i)) {
+                } else if (i.length() == 5 && checkWordsWithAlphabeticalLetters(i)) {
                     counting3.getAndIncrement();
                 }
             }
@@ -70,7 +70,7 @@ public class Main {
         return text.toString();
     }
 
-    public static boolean firstCheck(String string) {
+    public static boolean checkWordsWithRepeatingLetters(String string) {
         char[] chars = string.toCharArray();
         char c = chars[0];
         int counting = 0;
@@ -86,7 +86,7 @@ public class Main {
         }
     }
 
-    public static boolean secondCheck(String string) {
+    public static boolean checkWordsWithMirrorLetters(String string) {
         char[] chars = string.toCharArray();
         int counting = 0;
         List<Character> list = new LinkedList<>();
@@ -105,7 +105,7 @@ public class Main {
         }
     }
 
-    public static boolean thirdCheck(String string) {
+    public static boolean checkWordsWithAlphabeticalLetters(String string) {
         char[] chars = string.toCharArray();
         int counting = 0;
         for (int i = 0; i < chars.length - 1; i++) {
